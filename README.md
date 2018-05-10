@@ -52,9 +52,11 @@ Executing the retrain.py with following parameters will create cookpad\_model tr
 
 `python retrain.py --bottleneck\_dir=tf\_files/bottlenecks  --model\_dir=tf\_files/models/ --summaries\_dir=tf\_files/training\_summaries/cooking\_cookpad\_model  --output\_graph=tf\_files/cookpad\_model.pb --output\_labels=tf\_files/retrained\_labels.txt --architecture=&quot;mobilenet\_1.0\_224&quot; --image\_dir=tf\_files/cookpad`
 
-This will output 3 metrics:
+### This will output 3 metrics:
 
-IMAGE 7
+![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/cookpad_model.jpg)
+
+![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/cookpad_model_val.jpg)
 
 **Validation Accuracy: ** 84% approximately.
 
@@ -92,9 +94,11 @@ Executing the retrain.py with following parameters will create food101\_model tr
 
 `python retrain.py --bottleneck\_dir=tf\_files/bottlenecks  --model\_dir=tf\_files/models/ --summaries\_dir=tf\_files/training\_summaries/cooking\_food101\_model  --output\_graph=tf\_files/food101\_model.pb --output\_labels=tf\_files/retrained\_labels.txt --architecture=&quot;mobilenet\_1.0\_224&quot; --image\_dir=tf\_files/food101`
 
-This will output 3 metrics:
+### This will output 3 metrics:
 
-IMAGE 7
+![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/food101.jpg)
+
+![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/food101_val.jpg)
 
 **Validation Accuracy:** 94% approximately.
 
@@ -125,6 +129,12 @@ This will output the following metrics:
 > Formula = No. images the model classified as sandwich correctly / total no of sandwich images
 
 > **Interpreting the results:** Using **cookpad data for testing** , the **food101\_model** has an overall accuracy greater for sandwich over sushi ( **recall =.84 vs .71** )but, it has a better precision for sushi over sandwich ( **precision =.74 vs .82** ). This means that there is a tendency for the model over-learn sandwich better than sushi or there exists some noise in the training or testing data. Removing noise in the data or increasing the no. of iterations and decreasing the learning-rate during training can improve the precision for both. Overall the model does much better when tested on unseen test data from the same food101 dataset **accuracy=94%.**
+
+#### cookpad_model vs food101_model vs allFood101_model 
+
+![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/all.jpg)
+
+![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/all_val.jpg)
 
 **Section 6**
 
