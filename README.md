@@ -54,9 +54,9 @@ Executing the retrain.py with following parameters will create cookpad\_model tr
 
 ### This will output 3 metrics:
 
-![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/cookpad_model.jpg)
+![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/cookpad_model.JPG)
 
-![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/cookpad_model_val.jpg)
+![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/cookpad_model_val.JPG)
 
 **Validation Accuracy: ** 84% approximately.
 
@@ -96,9 +96,9 @@ Executing the retrain.py with following parameters will create food101\_model tr
 
 ### This will output 3 metrics:
 
-![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/food101.jpg)
+![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/food101.JPG)
 
-![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/food101_val.jpg)
+![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/food101_val.JPG)
 
 **Validation Accuracy:** 94% approximately.
 
@@ -132,9 +132,9 @@ This will output the following metrics:
 
 #### cookpad_model vs food101_model vs allFood101_model 
 
-![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/all.jpg)
+![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/all.JPG)
 
-![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/all_val.jpg)
+![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/all_val.JPG)
 
 **Section 6**
 
