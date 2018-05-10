@@ -17,13 +17,13 @@ Below is write up of the approach taken to solve this problem. I have categorize
 
 The code and instructions to run the project using a docker image directly or using a dockerfile or using git are available at INSTAL INSTRUCTIONS.
 
-**Section 1**
+## **Section 1**
 
 - The language used ** ** is  **python, ** for its community support, simplicity and variety of libraries available. ** **
 - The framework used is  **Tensorflow** , since it is popular and can be easily used to optimize for mobiles using TOCO. Also, tensorflow gives intermediate protobuff files which can be used in parallel to optimize and use for mobile development and testing.
 - The model uses an image-net pre-trained  **CNN**  model called  **mobilenet**. The  **mobilenet architecture** is light, fast and works well on embedded devices and mobiles but sacrifices a little on accuracy. As the solution is intended to be used on a mobile, the trade-off seemed fair for this demonstration.
 
-**Section 2**
+## **Section 2**
 
 - The first thing I did was check for other available datasets I could use for the problem. I came across  **Food101****  data** from wiki of the book titled &quot;European Conference on Computer Vision&quot;.
 - Food101 has 101 classes of food with 1000 images each. It has four categories of Sandwich, from which I randomly chose 250 images each to form 1000 images of Sandwich.
@@ -33,7 +33,7 @@ The code and instructions to run the project using a docker image directly or us
 - Then analyse and compare the results and evaluation metrics of the 2 models.
 - Finally, create a model called **all\_food model** and an android app to classify all 101 dishes of the **Food101 data.**
 
-**Section 3**
+## **Section 3**
 
 - The following are the tuning parameter values I chose to train All 3 models both the models.
 - **--how\_many\_training\_steps**  (epochs) 2000
@@ -46,13 +46,13 @@ The code and instructions to run the project using a docker image directly or us
 - **--test\_batch\_size** == -1, use all images, as this will be done only one at the end of all iterations and only 10% of the data.
 - **--flip\_left\_right, --random\_crop, --random\_brightness, --random\_scale ** are all set to 0 as using this will increase accuracy but at the cost of training time. But, can be used if accuracy is a priority over training time.
 
-**Section 4**
+## **Section 4**
 
 Executing the retrain.py with following parameters will create cookpad\_model trained on cookpad data.  Parameters indicate model name, location to save model and model architecture to be used.
 
 `python retrain.py --bottleneck\_dir=tf\_files/bottlenecks  --model\_dir=tf\_files/models/ --summaries\_dir=tf\_files/training\_summaries/cooking\_cookpad\_model  --output\_graph=tf\_files/cookpad\_model.pb --output\_labels=tf\_files/retrained\_labels.txt --architecture=&quot;mobilenet\_1.0\_224&quot; --image\_dir=tf\_files/cookpad`
 
-### This will output 3 metrics:
+#### This will output 3 metrics:
 
 ![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/cookpad_model.JPG)
 
@@ -88,13 +88,13 @@ This will output the following metrics:
 
 > **Interpreting the results:** Using **food101 data for testing** , the **cookpad\_model** has an overall accuracy greater for sushi over sandwich ( **recall =.8 vs .74** )but, it has a slightly better precision for sandwich over sushi ( **precision =.75 vs .78** ). This means that there is a tendency for the model over-learn sushi better than sandwich or that there are anomalies/bad labels in the testing or training data. Removing anomalies and training the data or decreasing the learning-rate and increasing the iteration will show better precision for both. Overall the model does much better when tested on unseen test data from the same cookpad dataset **accuracy=85%.**
 
-**Section 5**
+## **Section 5**
 
 Executing the retrain.py with following parameters will create food101\_model trained on food101 data.  Parameters indicate model name, location to save model and model architecture to be used.
 
 `python retrain.py --bottleneck\_dir=tf\_files/bottlenecks  --model\_dir=tf\_files/models/ --summaries\_dir=tf\_files/training\_summaries/cooking\_food101\_model  --output\_graph=tf\_files/food101\_model.pb --output\_labels=tf\_files/retrained\_labels.txt --architecture=&quot;mobilenet\_1.0\_224&quot; --image\_dir=tf\_files/food101`
 
-### This will output 3 metrics:
+#### This will output 3 metrics:
 
 ![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/food101.JPG)
 
@@ -130,13 +130,13 @@ This will output the following metrics:
 
 > **Interpreting the results:** Using **cookpad data for testing** , the **food101\_model** has an overall accuracy greater for sandwich over sushi ( **recall =.84 vs .71** )but, it has a better precision for sushi over sandwich ( **precision =.74 vs .82** ). This means that there is a tendency for the model over-learn sandwich better than sushi or there exists some noise in the training or testing data. Removing noise in the data or increasing the no. of iterations and decreasing the learning-rate during training can improve the precision for both. Overall the model does much better when tested on unseen test data from the same food101 dataset **accuracy=94%.**
 
-#### cookpad_model vs food101_model vs allFood101_model 
+### cookpad_model vs food101_model vs allFood101_model 
 
 ![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/all.JPG)
 
 ![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/all_val.JPG)
 
-**Section 6**
+## **Section 6**
 
 Now that we have a decent enough tensorflow model, the next step is to see how it can be used via a smart phone. There are mainly 3 approaches that are popular.
 
@@ -148,7 +148,7 @@ Now that we have a decent enough tensorflow model, the next step is to see how i
 
 I used option 3 and created an app to classify 101 dishes as part the demonstration for this assignment. The app is built on Android and uses tflite format of the model we trained on all the foods of Food101 dataset.
 
-#### Please check youtube video of the app
+### Please check youtube video of the app
 
 > **YOUTUBE VIDEO:** https://www.youtube.com/watch?v=3EE6ZpwKUQg
 
