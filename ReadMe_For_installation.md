@@ -13,19 +13,19 @@ There are 3 ways to run this project:
 
 ### 1) These are the steps to run the scripts using docker image. The image has all we need to rum the project.
 
-> * Install docker, skip this if you have docker already. 
+> * Install docker, skip this if you have docker already.                    
 > ` sudo curl -fsSL https://get.docker.com/ | sh `
 
-> * Get the docker image.  
+> * Get the docker image.                      
 > ` sudo docker pull docker.io/arunpadmanabhan/cooking-sandwushi ` 
 
-> * Run the docker image. 
+> * Run the docker image.                               
 > ` sudo docker run -it arunpadmanabhan/cooking-sandwushi ` 
 
-> * Activate the anaconda envoirnment. 
+> * Activate the anaconda envoirnment.                         
 > ` source activate cookpad `
 
-> * Move in-to the project folder. 
+> * Move in-to the project folder.                           
 > ` cd /home/cookpad_sandwushi/ ` 
 
 > * Run script to create cookpad_model using sandwich and sushi images from cookpad. Prints accuracy metrics on console after training and saves a model called cookpad_model.pb to the **tf_files/** folder in the project.
@@ -51,15 +51,24 @@ There are 3 ways to run this project:
 > * Create a conda environment with python.  
 > ` conda create --name cookpad python=3 ` 
 
-> * Activate the anaconda envoirnment. 
+> * Activate the anaconda envoirnment.                            
 > ` source activate cookpad `
 
 > * Install packages.
 >
 > ` pip install tensorflow `
+>
 > ` pip install opencv-python ` 
+>
 > `apt-get install libgtk2.0-dev -y `
+>
 > `pip install Pillow ` 
+
+> * Clone the git project and move in-to project folder.        
+> git clone https://github.com/arun-apad/cookpad_sandwushi.git
+>
+> cd cookpad_sandwushi/
+
 
 > * Run script to create cookpad_model using sandwich and sushi images from cookpad. Prints accuracy metrics on console after training and saves a model called cookpad_model.pb to the **tf_files/** folder in the project.
 >
