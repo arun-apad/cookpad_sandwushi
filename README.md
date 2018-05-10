@@ -48,9 +48,9 @@ The code and instructions to run the project using a docker image directly or us
 
 ## **Section 4**
 
-Executing the retrain.py with following parameters will create cookpad\_model trained on cookpad data.  Parameters indicate model name, location to save model and model architecture to be used.
-
-`python retrain.py --bottleneck\_dir=tf\_files/bottlenecks  --model\_dir=tf\_files/models/ --summaries\_dir=tf\_files/training\_summaries/cooking\_cookpad\_model  --output\_graph=tf\_files/cookpad\_model.pb --output\_labels=tf\_files/retrained\_labels.txt --architecture=&quot;mobilenet\_1.0\_224&quot; --image\_dir=tf\_files/cookpad`
+> Executing the retrain.py with following parameters will create cookpad\_model trained on cookpad data.  Parameters indicate model name, location to save model and model architecture to be used.
+> 
+> `python retrain.py --bottleneck\_dir=tf\_files/bottlenecks  --model\_dir=tf\_files/models/ --summaries\_dir=tf\_files/training\_summaries/cooking\_cookpad\_model  --output\_graph=tf\_files/cookpad\_model.pb --output\_labels=tf\_files/retrained\_labels.txt --architecture=&quot;mobilenet\_1.0\_224&quot; --image\_dir=tf\_files/cookpad`
 
 #### This will output 3 metrics:
 
@@ -58,32 +58,32 @@ Executing the retrain.py with following parameters will create cookpad\_model tr
 
 ![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/cookpad_model_val.JPG)
 
-**Validation Accuracy: ** 84% approximately.
-
-**Cross Entropy:**  0.58  approximately, lower the better. Interpreted as loss metric to measure the optimization.
-
-**Test\_Accuracy:**   85% approximately. The 10% of images the model has not seen before.
+> **Validation Accuracy:**  **84%** approximately.
+> 
+> **Cross Entropy:**  **0.58**  approximately, lower the better. Interpreted as loss metric to measure the optimization.
+> 
+> **Test\_Accuracy:**   **85%** approximately. The 10% of images the model has not seen before.
 
 Next, the model is used to classify the 2000 food101 images using the command.
 
-`python validating\_food101\_images\_with\_cookpadModel.py`
+> `python validating\_food101\_images\_with\_cookpadModel.py`
 
 This will output the following metrics:
 
-**Precision(sushi)**: **0.7561436672967864****  **(% of images classified as sushi was actually sushi)
-
+> **Precision(sushi)**: **0.7561436672967864****  **(% of images classified as sushi was actually sushi)
+>
 > Formula = No. images the model classified as sushi correctly / No. images the model classified as sushi instead of sandwich
 
-**Precision(sandwich):**  **0.7876857749469215** (% of images classified as sandwich was actually sandwich)
-
+> **Precision(sandwich):**  **0.7876857749469215** (% of images classified as sandwich was actually sandwich)
+>
 > Formula = No. images the model classified as sandwich correctly / No. images the model classified as sandwich instead of sushi
 
-**Recall(sushi):**  **0.8** (Accuracy %)
-
+> **Recall(sushi):**  **0.8** (Accuracy %)
+>
 > Formula = No. images the model classified as sushi correctly / total no of sushi images
 
-**Recall(sandwich):****0.742** (Accuracy %)
-
+> **Recall(sandwich):** **0.742** (Accuracy %)
+> 
 > Formula = No. images the model classified as sandwich correctly / total no of sandwich images
 
 > **Interpreting the results:** Using **food101 data for testing** , the **cookpad\_model** has an overall accuracy greater for sushi over sandwich ( **recall =.8 vs .74** )but, it has a slightly better precision for sandwich over sushi ( **precision =.75 vs .78** ). This means that there is a tendency for the model over-learn sushi better than sandwich or that there are anomalies/bad labels in the testing or training data. Removing anomalies and training the data or decreasing the learning-rate and increasing the iteration will show better precision for both. Overall the model does much better when tested on unseen test data from the same cookpad dataset **accuracy=85%.**
