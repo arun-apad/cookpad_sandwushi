@@ -1,4 +1,4 @@
-## **Installation instructions**
+# **Installation instructions**
 
 ### **The following are instructions to run the project followed by descriptions of the project folders and files**
 
@@ -11,21 +11,21 @@ There are 3 ways to run this project:
 > 3) Using the docker file to get image and run the scripts.
 
 
-## 1) These are the steps to run the scripts using docker image. The image has all we need to rum the project.
+### 1) These are the steps to run the scripts using docker image. The image has all we need to rum the project.
 
-> * Install docker, skip this if you have docker already.
+> * Install docker, skip this if you have docker already. 
 > ` sudo curl -fsSL https://get.docker.com/ | sh `
 
-> * Get the docker image. 
+> * Get the docker image.  
 > ` sudo docker pull docker.io/arunpadmanabhan/cooking-sandwushi ` 
 
-> * Run the docker image.
+> * Run the docker image. 
 > ` sudo docker run -it arunpadmanabhan/cooking-sandwushi ` 
 
-> * Activate the anaconda envoirnment.
+> * Activate the anaconda envoirnment. 
 > ` source activate cookpad `
 
-> * Move in-to the project folder.
+> * Move in-to the project folder. 
 > ` cd /home/cookpad_sandwushi/ ` 
 
 > * Run script to create cookpad_model using sandwich and sushi images from cookpad. Prints accuracy metrics on console after training and saves a model called cookpad_model.pb to the **tf_files/** folder in the project.
@@ -43,5 +43,40 @@ There are 3 ways to run this project:
 > * Run script to validate food101_model on sandwich and sushi images from cookpad. Prints pricision and recall of cookpad_model against cookpad data.
 >
 > ` python validating_cookpad_images_with_food101Model.py ` 
+
+
+
+### 2) These are the steps to run the scripts using git-clone. The git project has all we need to rum the project, except a few packages.
+
+> * Create a conda environment with python.  
+> ` conda create --name cookpad python=3 ` 
+
+> * Activate the anaconda envoirnment. 
+> ` source activate cookpad `
+
+> * Install packages.
+>
+> ` pip install tensorflow `
+> ` pip install opencv-python ` 
+> `apt-get install libgtk2.0-dev -y `
+> `pip install Pillow ` 
+
+> * Run script to create cookpad_model using sandwich and sushi images from cookpad. Prints accuracy metrics on console after training and saves a model called cookpad_model.pb to the **tf_files/** folder in the project.
+>
+> ` python retrain.py --bottleneck_dir=tf_files/bottlenecks  --model_dir=tf_files/models/ --summaries_dir=tf_files/training_summaries/cooking_cookpad_model  --output_graph=tf_files/cookpad_model.pb --output_labels=tf_files/retrained_labels.txt --architecture="mobilenet_1.0_224" --image_dir=tf_files/cookpad `
+
+> * Run script to create food101_model using sandwich and sushi images from food101. Prints accuracy metrics on console after training and saves a model called food101_model.pb to the **tf_files/** folder in the project.
+>
+> ` python retrain.py --bottleneck_dir=tf_files/bottlenecks  --model_dir=tf_files/models/ --summaries_dir=tf_files/training_summaries/cooking_food101_model  --output_graph=tf_files/food101_model.pb --output_labels=tf_files/retrained_labels.txt --architecture="mobilenet_1.0_224" --image_dir=tf_files/food101 ` 
+
+> * Run script to validate cookpad_model on sandwich and sushi images from food101. Prints pricision and recall of cookpad_model against food101 data.
+>
+> ` python validating_food101_images_with_cookpadModel.py `  
+
+> * Run script to validate food101_model on sandwich and sushi images from cookpad. Prints pricision and recall of cookpad_model against cookpad data.
+>
+> ` python validating_cookpad_images_with_food101Model.py ` 
+
+
 
 
