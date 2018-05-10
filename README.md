@@ -3,7 +3,7 @@
 
 To implement a deep learning model, that when given a photo, will classify it into one of two categories: sushi or sandwich. Keeping in mind that this will be used via a smartphone camera.
 
-IMAGE\_GIF
+![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/problem.gif)
 
 Below is write up of the approach taken to solve this problem. I have categorized it into the following sections.
 
