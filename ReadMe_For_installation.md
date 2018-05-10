@@ -96,4 +96,21 @@ There are 3 ways to run this project:
 > ` sudo docker run -it arunpadmanabhan/cooking-sandwushi/bin/bash -c “source activate cookpad && RUN cd /home/cookpad_sandwushi/  && exec python retrain.py --bottleneck_dir=tf_files/bottlenecks  --model_dir=tf_files/models/ --summaries_dir=tf_files/training_summaries/cooking_cookpad_model  --output_graph=tf_files/cookpad_model.pb --output_labels=tf_files/retrained_labels.txt --architecture="mobilenet_1.0_224" --image_dir=tf_files/cookpad  && exec python retrain.py --bottleneck_dir=tf_files/bottlenecks  --model_dir=tf_files/models/ --summaries_dir=tf_files/training_summaries/cooking_food101_model  --output_graph=tf_files/food101_model.pb --output_labels=tf_files/retrained_labels.txt --architecture="mobilenet_1.0_224" --image_dir=tf_files/food101 && exec python validating_food101_images_with_cookpadModel.py && exec python validating_cookpad_images_with_food101Model.py ” `  
 
 
+## These are the files and folders that are of importance to the project.
+
+> * Apart from the python and markdown files in the project folder, there is a  ` app-debug.apk  ` which is the Android apk created for this demonstration. 
+
+>  * The ` /tf_lite ` has the data and models for both cookpad and food101 in respective folders. There is only the model for allfood_model which classifies all 101 food types under ` /allFoodModel ` directory. The data can be accessed from https://www.vision.ee.ethz.ch/datasets_extra/food-101/. 
+
+
+
+
+
+
+
+
+
+
+
+
 
