@@ -23,8 +23,7 @@ from PIL import Image
 from glob import glob
 
 
-# In[14]:
-
+# Helper function to load model file
 
 def load_graph(model_file):
   graph = tf.Graph()
@@ -38,7 +37,7 @@ def load_graph(model_file):
   return graph
 
 
-# In[15]:
+# Helper function to create tensors from every image
 
 
 def read_tensor_from_image_file(file_name, input_height=299, input_width=299,
@@ -67,8 +66,7 @@ def read_tensor_from_image_file(file_name, input_height=299, input_width=299,
   return result
 
 
-# In[16]:
-
+# Helper function to load labels from txt
 
 def load_labels(label_file):
   label = []
@@ -78,7 +76,9 @@ def load_labels(label_file):
   return label
 
 
-# In[19]:
+# Start of validation, here we are validating the cookpad_model trained on cookpads's sandwich and sushi classes 
+
+# Use all sushi images from food101 as test data (1000 sushi images )
 
 
 pathlist = Path("tf_files/food101/sushi").glob('**/*.j*')
@@ -137,7 +137,9 @@ for path in pathlist:
     print("Validating Sushi Food101 Images "+str(countCookpadonFood101Sushi)+"  out of "+str(i)+" --- "+str(countCookpadonFood101Sushi/i))
 
 
-# In[20]:
+# Start of validation, here we are validating the cookpad_model trained on cookpads's sandwich and sushi classes 
+
+# Use all Sandwich images from food101 as test data (1000 sandwich images )
 
 
 pathlist = Path("tf_files/food101/sandwich").glob('**/*.j*')
@@ -156,10 +158,6 @@ for path in pathlist:
     path_in_str = str(path)
     #print(path_in_str)
     im = Image.open(path_in_str)
-    
-
-    #print(path_in_str)
-    
     
     file_name = path_in_str
     graph = load_graph(model_file)
@@ -186,13 +184,9 @@ for path in pathlist:
     top_k = results.argsort()[-5:][::-1]
     labels = load_labels(label_file)
 
-    #print('\nEvaluation time (1-image): {:.3f}s\n'.format(end-start))
-    #print(results.argsort()[-5:][::-1])
     i = i+1
     if results[0] > results[1]:
         countCookpadon101Sandwich = countCookpadon101Sandwich+1
-    #print(labels[0], results[0])
-    #print(labels[1], results[1])
     print("Validating Sandwich Food101 Images "+str(countCookpadon101Sandwich)+"  out of "+str(i)+" --- "+str(countCookpadon101Sandwich/i))
 
 print("Images of Sushi from Food101 data = 1000")
@@ -202,7 +196,7 @@ print("Images of Sandwich from Food101 data = 1000")
 print("Images of Sandwich from Food101 data, that were correctly classified  = "+str(countCookpadon101Sandwich))
 
 
-# In[22]:
+# Calulation Precition and recall of the food101_model for both sushi and sandwich respectively 
 
 
 #Precision of the Model trained with Cookpad images and tested on Food101 images.
@@ -218,25 +212,17 @@ print(Precision_sushi)
 print("\n")
 print("------------------------------------------------------------------------------------------------------------------------------")
 
-
-# In[23]:
-
-
 #Precision of the Model trained with Cookpad images and tested on Food101 images.
 #(% of images classified as sandwich was actually sandwich)
 # Formula = No. images the model classified as sandwich correctly / No. images the model classified as sandwich instead of sandwich)
 
 Precision_sandwich = countCookpadon101Sandwich/(countCookpadon101Sandwich + (1000 - countCookpadonFood101Sushi))
 print("(% of images classified as sandwich was actually sandwich)")
-print("Formula = No. images the model classified as sandwich correctly / No. images the model classified as sandwich instead of sandwich")
+print("Formula = No. images the model classified as sandwich correctly / No. images the model classified as sandwich instead of sushi")
 print("Precision for Sandwich by the Model trained with Cookpad images and tested on Food101 images.")
 print(Precision_sandwich)
 print("\n")
 print("------------------------------------------------------------------------------------------------------------------------------")
-
-
-# In[24]:
-
 
 #Recall of the Model trained with Cookpad images and tested on Food101 images.
 #(% of accuracy)
@@ -251,19 +237,15 @@ print(Recall_sushi)
 print("\n")
 print("------------------------------------------------------------------------------------------------------------------------------")
 
-
-# In[26]:
-
-
 #Recall of the Model trained with Cookpad images and tested on Food101 images.
 #(% of accuracy)
-#Fomula = No. images the model classified as sanwich correctly / total no of sandwich images
+#Fomula = No. images the model classified as sandwich correctly / total no of sandwich images
 
 Recall_sandwich = countCookpadon101Sandwich/1000 
 
 print("(Accuracy %)")
-print("Fomula = No. images the model classified as sushi correctly / total no of sushi images")
-print("Recall for Sushi by the Model trained with Cookpad images and tested on Food101 images.")
+print("Fomula = No. images the model classified as sandwich correctly / total no of sandwich images")
+print("Recall for Sandwich by the Model trained with Cookpad images and tested on Food101 images.")
 print(Recall_sandwich)
 print("\n")
 print("------------------------------------------------------------------------------------------------------------------------------")
