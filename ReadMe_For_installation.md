@@ -48,7 +48,7 @@ There are 3 ways to run this project:
 
 ### 2) These are the steps to run the scripts using git-clone. The git project has all we need to rum the project, except a few packages.
 
-> * Create a conda environment with python.  
+> * Create a conda environment with python version 3.  
 > ` conda create --name cookpad python=3 ` 
 
 > * Activate the anaconda envoirnment.                            
@@ -65,9 +65,9 @@ There are 3 ways to run this project:
 > `   pip install Pillow ` 
 
 > * Clone the git project and move in-to project folder.   
-> ` git clone https://github.com/arun-apad/cookpad_sandwushi.git `
->
-> ` cd cookpad_sandwushi/ `
+> ` git clone https://github.com/arun-apad/cookpad_sandwushi.git ` 
+> 
+> ` cd cookpad_sandwushi/ ` 
 
 
 > * Run script to create cookpad_model using sandwich and sushi images from cookpad. Prints accuracy metrics on console after training and saves a model called cookpad_model.pb to the **tf_files/** folder in the project.
@@ -86,6 +86,14 @@ There are 3 ways to run this project:
 >
 > ` python validating_cookpad_images_with_food101Model.py ` 
 
+
+### 3) Finally the Dockefile can be used to get the docker image and dependecies for the project.
+
+> * The Dockerfile gets the image, activates conda envoirnemet and runs the scripts. Below are the contents of Dockerfile
+
+> ` sudo docker pull docker.io/arunpadmanabhan/cooking-sandwushi`  
+>
+> ` sudo docker run -it arunpadmanabhan/cooking-sandwushi/bin/bash -c “source activate cookpad && RUN cd /home/cookpad_sandwushi/  && exec python retrain.py --bottleneck_dir=tf_files/bottlenecks  --model_dir=tf_files/models/ --summaries_dir=tf_files/training_summaries/cooking_cookpad_model  --output_graph=tf_files/cookpad_model.pb --output_labels=tf_files/retrained_labels.txt --architecture="mobilenet_1.0_224" --image_dir=tf_files/cookpad  && exec python retrain.py --bottleneck_dir=tf_files/bottlenecks  --model_dir=tf_files/models/ --summaries_dir=tf_files/training_summaries/cooking_food101_model  --output_graph=tf_files/food101_model.pb --output_labels=tf_files/retrained_labels.txt --architecture="mobilenet_1.0_224" --image_dir=tf_files/food101 && exec python validating_food101_images_with_cookpadModel.py && exec python validating_cookpad_images_with_food101Model.py ” `  
 
 
 
