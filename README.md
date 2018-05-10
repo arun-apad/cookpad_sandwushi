@@ -15,7 +15,8 @@ Below is write up of the approach taken to solve this problem. I have categorize
 - **Section 6:**  Notes on how the model can be used in production and what modifications would be necessary to deploy it into a useful product.
 
 
-The code and instructions to run the project using a docker image directly or using a dockerfile or using git are available at INSTAL INSTRUCTIONS.
+The code and instructions to run the project using a docker image directly or using a dockerfile or using git are available at https://github.com/arun-apad/cookpad_sandwushi/blob/master/ReadMe_For_installation.md
+
 
 ## **Section 1**
 
