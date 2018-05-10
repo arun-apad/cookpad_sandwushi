@@ -54,20 +54,20 @@ There are 3 ways to run this project:
 > * Activate the anaconda envoirnment.                            
 > ` source activate cookpad `
 
-> * Install packages.
+> * Install packages. 
 >
-> ` pip install tensorflow `
+> `   pip install tensorflow `
 >
-> ` pip install opencv-python ` 
+> `   pip install opencv-python ` 
 >
-> `apt-get install libgtk2.0-dev -y `
+> `   apt-get install libgtk2.0-dev -y `
 >
-> `pip install Pillow ` 
+> `   pip install Pillow ` 
 
-> * Clone the git project and move in-to project folder.        
-> git clone https://github.com/arun-apad/cookpad_sandwushi.git
+> * Clone the git project and move in-to project folder.   
+> ` git clone https://github.com/arun-apad/cookpad_sandwushi.git `
 >
-> cd cookpad_sandwushi/
+> ` cd cookpad_sandwushi/ `
 
 
 > * Run script to create cookpad_model using sandwich and sushi images from cookpad. Prints accuracy metrics on console after training and saves a model called cookpad_model.pb to the **tf_files/** folder in the project.
