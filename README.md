@@ -138,9 +138,11 @@ Now that we have a decent enough tensorflow model, the next step is to see how i
 
 I used option 3 and created an app to classify 101 dishes as part the demonstration for this assignment. The app is built on Android and uses tflite format of the model we trained on all the foods of Food101 dataset.
 
-YOUTUBE
+#### Please check youtube video of the app
 
-> I used the protobuff or .pb graph/model file that was trained on all the food and used a tool called TOCO( [TensorFlow Lite Optimizing Converter](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/lite/toco/README.md)) to convert the .pd to a .lite format. Basically, the tool compresses the features learned of the model, so that it is more optimized for mobiles and devices. It is analogical to doing a PCA to reduce the components of the array holding the weights learned by the model. Once the .lite format is created it can be stored within the assets used by the mobile app.
+> **YOUTUBE VIDEO:** https://www.youtube.com/watch?v=3EE6ZpwKUQg
+
+ I used the protobuff or .pb graph/model file that was trained on all the food and used a tool called TOCO( [TensorFlow Lite Optimizing Converter](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/lite/toco/README.md)) to convert the .pd to a .lite format. Basically, the tool compresses the features learned of the model, so that it is more optimized for mobiles and devices. It is analogical to doing a PCA to reduce the components of the array holding the weights learned by the model. Once the .lite format is created it can be stored within the assets used by the mobile app.
 
 **Please note:**
 
