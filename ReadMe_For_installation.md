@@ -37,9 +37,11 @@ There are 3 ways to run this project:
 > ` python retrain.py --bottleneck_dir=tf_files/bottlenecks  --model_dir=tf_files/models/ --summaries_dir=tf_files/training_summaries/cooking_food101_model  --output_graph=tf_files/food101_model.pb --output_labels=tf_files/retrained_labels.txt --architecture="mobilenet_1.0_224" --image_dir=tf_files/food101 ` 
 
 > * Run script to validate cookpad_model on sandwich and sushi images from food101. Prints pricision and recall of cookpad_model against food101 data.
+>
 > ` python validating_food101_images_with_cookpadModel.py `  
 
 > * Run script to validate food101_model on sandwich and sushi images from cookpad. Prints pricision and recall of cookpad_model against cookpad data.
+>
 > ` python validating_cookpad_images_with_food101Model.py ` 
 
 
