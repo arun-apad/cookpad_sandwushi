@@ -90,9 +90,9 @@ This will output the following metrics:
 
 ## **Section 5**
 
-Executing the retrain.py with following parameters will create food101\_model trained on food101 data.  Parameters indicate model name, location to save model and model architecture to be used.
-
-`python retrain.py --bottleneck\_dir=tf\_files/bottlenecks  --model\_dir=tf\_files/models/ --summaries\_dir=tf\_files/training\_summaries/cooking\_food101\_model  --output\_graph=tf\_files/food101\_model.pb --output\_labels=tf\_files/retrained\_labels.txt --architecture=&quot;mobilenet\_1.0\_224&quot; --image\_dir=tf\_files/food101`
+> Executing the retrain.py with following parameters will create food101\_model trained on food101 data.  Parameters indicate model name, location to save model and model architecture to be used.
+> 
+> `python retrain.py --bottleneck\_dir=tf\_files/bottlenecks  --model\_dir=tf\_files/models/ --summaries\_dir=tf\_files/training\_summaries/cooking\_food101\_model  --output\_graph=tf\_files/food101\_model.pb --output\_labels=tf\_files/retrained\_labels.txt --architecture=&quot;mobilenet\_1.0\_224&quot; --image\_dir=tf\_files/food101`
 
 #### This will output 3 metrics:
 
@@ -100,33 +100,34 @@ Executing the retrain.py with following parameters will create food101\_model tr
 
 ![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/food101_val.JPG)
 
-**Validation Accuracy:** 94% approximately.
-
-**cross entropy:** 0.2 approximately, lower the better. Interpreted as loss metric to measure the optimization.
-
-**Test\_Accuracy:**   94% approximately. The 10% of images the model has not seen before.
+> **Validation Accuracy:** 94% approximately.
+> 
+> **cross entropy:** 0.2 approximately, lower the better. Interpreted as loss metric to measure the optimization.
+> 
+> **Test\_Accuracy:**   94% approximately. The 10% of images the model has not seen before.
 
 Next, the model is used to classify the 804 Cookpad images using the command.
 
-`python validating\_cookpad\_images\_with\_food101Model.py`
+> `python validating\_cookpad\_images\_with\_food101Model.py`
 
 This will output the following metrics:
 
-**Precision(sushi):**  **0.8228571428571428** (% of images classified as sushi was actually sushi)
-
+>**Precision(sushi):**  **0.8228571428571428** (% of images classified as sushi was actually sushi)
+> 
 > Formula = No. images the model classified as sushi correctly / No. images the model classified as sushi instead of sandwich
 
-**Precision(sandwich):**  **0.748898678414097** (% of images classified as sandwich was actually sandwich)
-
+> **Precision(sandwich):**  **0.748898678414097** (% of images classified as sandwich was actually sandwich)
+> 
 > Formula = No. images the model classified as sandwich correctly / No. images the model classified as sandwich instead of sushi
 
-**Recall(sushi):**  **0.7164179104477612** (Accuracy %)
-
+>**Recall(sushi):**  **0.7164179104477612** (Accuracy %)
+>
 > Formula = No. images the model classified as sushi correctly / total no of sushi images
 
-**Recall(sandwich):**  **0.845771144278607** (Accuracy %)
-
+>**Recall(sandwich):**  **0.845771144278607** (Accuracy %)
+> 
 > Formula = No. images the model classified as sandwich correctly / total no of sandwich images
+
 
 > **Interpreting the results:** Using **cookpad data for testing** , the **food101\_model** has an overall accuracy greater for sandwich over sushi ( **recall =.84 vs .71** )but, it has a better precision for sushi over sandwich ( **precision =.74 vs .82** ). This means that there is a tendency for the model over-learn sandwich better than sushi or there exists some noise in the training or testing data. Removing noise in the data or increasing the no. of iterations and decreasing the learning-rate during training can improve the precision for both. Overall the model does much better when tested on unseen test data from the same food101 dataset **accuracy=94%.**
 
@@ -135,6 +136,7 @@ This will output the following metrics:
 ![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/all.JPG)
 
 ![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/all_val.JPG)
+
 
 ## **Section 6**
 
@@ -156,9 +158,9 @@ I used option 3 and created an app to classify 101 dishes as part the demonstrat
 
 **Please note:**
 
-> All resources used to build the project and app are for demonstrating exclusively for this assignment and have no intention of using/publishing it anywhere.
+> All resources used to build the project and app are for demonstrating exclusively for this assignment and have no intention of using/publishing it anywhere. The model trained on this, allfood_model has an accuracy of only at about 60%.
 
-> I got data from Food101 data from [https://www.vision.ee.ethz.ch/datasets\_extra/food-101/](https://www.vision.ee.ethz.ch/datasets_extra/food-101/)
+> I got data from Food101 data from [https://www.vision.ee.ethz.ch/datasets\_extra/food-101/](https://www.vision.ee.ethz.ch/datasets_extra/food-101/). 
 
 > I used images and links from [https://cookpad.com/uk/](https://cookpad.com/uk/%20) for the app development.
 
