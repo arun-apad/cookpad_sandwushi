@@ -22,7 +22,7 @@ The code and instructions to run the project using a docker image directly or us
 
 - The language used is  **python,** for its community support, simplicity and variety of libraries available.
 - The framework used is  **Tensorflow** , since it is popular and can be easily used to optimize for mobiles using TOCO. Also, tensorflow gives intermediate protobuff files which can be used in parallel to optimize and use for mobile development and testing.
-- The model uses an image-net pre-trained  **CNN**  model called  **mobilenet**. The  **mobilenet architecture** is light, fast and works well on embedded devices and mobiles but sacrifices a little on accuracy. This comes in various sub-archtechture based on speed to train and accrucy trade=offs.e sub architechure used is **mobilenet 1.0 which uses a 224X224 image size** to do the training. As the solution is intended to be used on a mobile, the trade-off seemed fair for this demonstration.
+- The model uses an image-net pre-trained  **CNN**  model called  **mobilenet**. The  **mobilenet architecture** is light, fast and works well on embedded devices and mobiles but sacrifices a little on accuracy. This comes in various sub-archtechture based on speed to train and accuracy trade=offs. The sub architechure used is **mobilenet 1.0 which uses a 224X224 image size** to do the training. As the solution is intended to be used on a mobile, the trade-off seemed fair for this demonstration.
 
 ## **Section 2**
 
