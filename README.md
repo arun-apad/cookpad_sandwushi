@@ -5,7 +5,7 @@ To implement a deep learning model, that when given a photo, will classify it in
 
 ![alt text](https://github.com/arun-apad/cookpad_sandwushi/blob/master/problem.gif)
 
-Below is write up of the approach taken to solve this problem. I have categorized it into the following sections.
+Below is a write up of the approach taken to solve this problem. I have categorized it into the following sections.
 
 - **Section 1:** Notes on the choice of language, framework, model and architecture used to solve the problem.
 - **Section 2:**  Notes on the general approach I chose to solve the problem. The datasets that are used and its characteristics.
@@ -20,9 +20,9 @@ The code and instructions to run the project using a docker image directly or us
 
 ## **Section 1**
 
-- The language used ** ** is  **python, ** for its community support, simplicity and variety of libraries available. ** **
+- The language used is  **python,** for its community support, simplicity and variety of libraries available.
 - The framework used is  **Tensorflow** , since it is popular and can be easily used to optimize for mobiles using TOCO. Also, tensorflow gives intermediate protobuff files which can be used in parallel to optimize and use for mobile development and testing.
-- The model uses an image-net pre-trained  **CNN**  model called  **mobilenet**. The  **mobilenet architecture** is light, fast and works well on embedded devices and mobiles but sacrifices a little on accuracy. As the solution is intended to be used on a mobile, the trade-off seemed fair for this demonstration.
+- The model uses an image-net pre-trained  **CNN**  model called  **mobilenet**. The  **mobilenet architecture** is light, fast and works well on embedded devices and mobiles but sacrifices a little on accuracy. This comes in various sub-archtechture based on speed to train and accrucy trade=offs.e sub architechure used is **mobilenet 1.0 which uses a 224X224 image size** to do the training. As the solution is intended to be used on a mobile, the trade-off seemed fair for this demonstration.
 
 ## **Section 2**
 
@@ -36,7 +36,7 @@ The code and instructions to run the project using a docker image directly or us
 
 ## **Section 3**
 
-- The following are the tuning parameter values I chose to train All 3 models both the models.
+- The following are the tuning parameter values I chose to train All 3 models.
 - **--how\_many\_training\_steps**  (epochs) 2000
 - **--learning\_rate**  = 0.001 as it yields optimal results for given epochs.
 - **--testing\_percentage**  = 10, % of unseen data to test after training and validation.
@@ -87,7 +87,8 @@ This will output the following metrics:
 > 
 > Formula = No. images the model classified as sandwich correctly / total no of sandwich images
 
-> **Interpreting the results:** Using **food101 data for testing** , the **cookpad\_model** has an overall accuracy greater for sushi over sandwich ( **recall =.8 vs .74** )but, it has a slightly better precision for sandwich over sushi ( **precision =.75 vs .78** ). This means that there is a tendency for the model over-learn sushi better than sandwich or that there are anomalies/bad labels in the testing or training data. Removing anomalies and training the data or decreasing the learning-rate and increasing the iteration will show better precision for both. Overall the model does much better when tested on unseen test data from the same cookpad dataset **accuracy=85%.**
+> ##  **Interpreting the results:** 
+> Using **food101 data for testing** , the **cookpad\_model** has an overall accuracy greater for sushi over sandwich ( **recall =.8 vs .74** )but, it has a slightly better precision for sandwich over sushi ( **precision =.75 vs .78** ). This means that there is a tendency for the model over-learn sushi better than sandwich or that there are anomalies/bad labels in the testing or training data. Removing anomalies and training the data or decreasing the learning-rate and increasing the iterations will show better precision for both. Overall the model does much better when tested on unseen test data from the same cookpad dataset **accuracy=85%.**
 
 ## **Section 5**
 
@@ -130,7 +131,8 @@ This will output the following metrics:
 > Formula = No. images the model classified as sandwich correctly / total no of sandwich images
 
 
-> **Interpreting the results:** Using **cookpad data for testing** , the **food101\_model** has an overall accuracy greater for sandwich over sushi ( **recall =.84 vs .71** )but, it has a better precision for sushi over sandwich ( **precision =.74 vs .82** ). This means that there is a tendency for the model over-learn sandwich better than sushi or there exists some noise in the training or testing data. Removing noise in the data or increasing the no. of iterations and decreasing the learning-rate during training can improve the precision for both. Overall the model does much better when tested on unseen test data from the same food101 dataset **accuracy=94%.**
+> ## **Interpreting the results:** 
+> Using **cookpad data for testing** , the **food101\_model** has an overall accuracy greater for sandwich over sushi ( **recall =.84 vs .71** )but, it has a better precision for sushi over sandwich ( **precision =.74 vs .82** ). This means that there is a tendency for the model over-learn sandwich better than sushi or there exists some noise in the training or testing data. Removing noise in the data or increasing the no. of iterations and decreasing the learning-rate during training can improve the precision for both. Overall the model does much better when tested on unseen test data from the same food101 dataset **accuracy=94%.**
 
 ### cookpad_model vs food101_model vs allFood101_model 
 
@@ -147,9 +149,9 @@ Now that we have a decent enough tensorflow model, the next step is to see how i
 
 > 2) Host the model on Tesnsorflow serving, a flexible, high-performance serving system for machine learning models, designed for production environments. TensorFlow Serving makes it easy to deploy new algorithms and experiments, while keeping the same server architecture and APIs. TensorFlow Serving provides out-of-the-box integration with TensorFlow models but can be easily extended to serve other types of models and data. Good approach if there can be latency trade-offs in the app.
 
-> 3) Store the model inside the app by converting it to a tflite(for Android) or coreML(for ios) format. This is great for using the phone&#39;s camera and stream the incoming frames or just using an image from the phone&#39;s gallery. This is tensorflow&#39;s lightweight format to be used within embedded devices and phones. It avoids hitting an external api for classification and hence is great for apps which use the camera directly.
+> 3) Store the model inside the app by converting it to a tflite(for Android) or coreML(for ios) format. This is great for using the phone&#39;s camera and stream the incoming frames or just using an image from the phone&#39;s gallery without having to hit an external API everytime. This is tensorflow&#39;s lightweight format to be used within embedded devices and phones. It need internet for classification and hence is great for apps which use the camera directly and IOT devices.
 
-I used option 3 and created an app to classify 101 dishes as part the demonstration for this assignment. The app is built on Android and uses tflite format of the model we trained on all the foods of Food101 dataset.
+I used option 3 and created an app to classify 101 dishes as part the demonstration for this assignment. The app is built on Android and uses tflite format of the model that was trained on all the foods of Food101 dataset.
 
 ### Please check youtube video of the app
 
@@ -159,7 +161,7 @@ I used option 3 and created an app to classify 101 dishes as part the demonstrat
 
 **Please note:**
 
-> All resources used to build the project and app are for demonstrating exclusively for this assignment and have no intention of using/publishing it anywhere. The model trained on this, allfood_model has an accuracy of only at about 60%.
+> All resources used to build the project and app are for demonstrating this assignment exclusively and have no intention of using/publishing it anywhere. The model trained on this, allfood_model has an accuracy of only at about 60%. Did not train further for accuracy.
 
 > I got data from Food101 data from [https://www.vision.ee.ethz.ch/datasets\_extra/food-101/](https://www.vision.ee.ethz.ch/datasets_extra/food-101/). 
 
